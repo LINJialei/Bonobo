@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="row">
+                    <div class="alert alert-success alert-dismissible col-xs-8 col-xs-push-2" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="row">
+                <div class="alert alert-danger alert-dismissible col-xs-8 col-xs-push-2" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ flashMessage }}
+                </div>
+            </div>
+            {% endfor %}<br/><br/>
+            <h1>Inscrivez vous et rencontrez les Bonobos de votre région !</h1>
+            <div id="login_block">
+                <form method="post">
+                    <div class="form-group-lg">
+                        <input type="text" name="login" placeholder="Votre login">
+                    </div>
+                    <div class="form-group-lg">
+                        <input type="password" name="password" placeholder="Votre mot de passe">
+                    </div>
+                    <div class="form-group-lg">
+                        <input type="password" name="password_confirm" placeholder="confirmez votre mot de passe">
+                    </div>
+                    <div class="form-group-lg">
+                        <button type="submit">Inscription</button>
+                    </div>
+                </form>
+            </div>
+            <h3>Vous avez déja compte ?</h3>
+            <a href="/">Connexion</a>
+        </div>
+    </div>
+{% endblock %}

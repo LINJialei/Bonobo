@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="row">
+                    <div class="alert alert-success alert-dismissible col-xs-8 col-xs-push-2" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="row">
+                <div class="alert alert-danger alert-dismissible col-xs-8 col-xs-push-2" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ flashMessage }}
+                </div>
+            </div>
+            {% endfor %}
+            <h1>Bonobos un jour bonobos toujours !</h1>
+            <a href="/logout">Déconnexion</a>
+            <a href="/list">
+                <div id="see_bonobos">
+                    <h1>Voir les bonobos</h1>
+                </div>
+            </a>
+            <a href="/account">
+                <div id="account">
+                    <h1>Gerez mon compte</h1>
+                </div>
+            </a>
+            <a href="/friend">
+                <div id="friends">
+                    <h1>Voir mes amis</h1>
+                </div>
+            </a>
+
+        </div>
+    </div>
+{% endblock %}

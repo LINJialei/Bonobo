@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="/home">Retour a l'index</a>
+    <div id="wrapper">
+        <div id="container">
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="row">
+                    <div class="alert alert-success alert-dismissible col-xs-8 col-xs-push-2" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="row">
+                    <div class="alert alert-danger alert-dismissible col-xs-8 col-xs-push-2" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
+            <h1>Gerez mon compte</h1><br/>
+            <form method="post">
+                <div class="form-group-lg">
+                    <input type="text" name="login" placeholder="Votre login" value="{{ user_info.getLogin() }}">
+                </div>
+                <div class="form-group-lg">
+                    <input type="password" name="password" placeholder="Votre mot de passe">
+                </div>
+                <div class="form-group-lg">
+                    <input type="text" name="firstname" placeholder="Votre prenom" value="{{ user_info.getFirstname() }}">
+                </div>
+                <div class="form-group-lg">
+                    <input type="text" name="lastname" placeholder="Votre nom de famille" value="{{ user_info.getLastname() }}">
+                </div>
+                <div class="form-group-lg">
+                    <input id="datepicker" type="date" name="birthday" placeholder="Votre date de naissance">
+                </div>
+                <div class="form-group-lg">
+                    <input type="text" name="family" placeholder="Famille" value="{{ user_info.getFamily() }}">
+                </div>
+                <div class="form-group-lg">
+                    <input type="text" name="race" placeholder="Race" value="{{ user_info.getRace() }}">
+                </div>
+                <div class="form-group-lg">
+                    <input type="text" name="foods" placeholder="Nourritures préferés" value="{{ user_info.getFoods() }}">
+                </div>
+                <div class="form-group-lg">
+                    <button type="submit">Mettre a jour mes informations</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+{% endblock %}

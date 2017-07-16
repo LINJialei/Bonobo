@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="/home">Retour a l'index</a>
+    <div id="wrapper">
+        <div id="container">
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="row">
+                    <div class="alert alert-success alert-dismissible col-xs-8 col-xs-push-2" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="row">
+                    <div class="alert alert-danger alert-dismissible col-xs-8 col-xs-push-2" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ flashMessage }}
+                    </div>
+                </div>
+            {% endfor %}
+            <h1>C 'est la Bonobiance !</h1><br/>
+            <div class="users">
+                <h1>{{ friends.getLogin() }}</h1>
+                <p><b>Firstname : </b> {{ friends.getFirstname() }}</p>
+                <p><b>Lastname : </b> {{ friends.getLastname() }}</p>
+                <p><b>Family : </b> {{ friends.getFamily() }}</p>
+                <p><b>Race : </b> {{ friends.getRace() }}</p>
+                <p><b>Foods : </b> {{ friends.getFoods() }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
