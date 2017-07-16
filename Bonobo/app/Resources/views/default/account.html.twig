@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <a href="/home">Retour a l'index</a>
+    <a href="/home">Retour</a>
     <div id="wrapper">
         <div id="container">
             {% for flashMessage in app.session.flashbag.get('success') %}
